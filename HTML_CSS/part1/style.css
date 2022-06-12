@@ -1,0 +1,53 @@
+.main {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #d3d3d3;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    margin: 100px;
+    height: calc(100% - 200px);
+    min-height: 420px;
+    min-width: 320px;
+}
+
+.red-box {
+    background-color: #dd76af;
+    width: 100px;
+    height: 200px;
+    min-width: 100px;
+}
+
+.blue-box {
+    background-color: #61aae9;
+    width: 100px;
+    height: 300px;
+    min-width: 100px;
+}
+
+.green-box {
+    background-color: #89d314;
+    height: 400px;
+    margin: 10px;
+    min-width: 100px;
+    flex-grow: 10;
+    overflow-x: auto;
+}
+
+@media only screen and (max-width: 520px) {
+    .container {
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (max-height: 520px) {
+    .container {
+        margin-bottom: 20px;
+    }
+}
