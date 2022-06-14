@@ -37,7 +37,7 @@ var Component = function () {
 			func
 		};
 		events[event].push(subscriber);
-		publishedEvents[event].forEach((data, index) => {
+		publishedEvents[event]?.forEach((data, index) => {
 			setTimeout(() => {
 				callSubscriber(subscriber, data)
 			}, (index + 1) * 2000);
