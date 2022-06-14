@@ -95,10 +95,6 @@ tr td:last-child {
 	min-width: 100px;
 }
 
-.progress-bar-value-toggle {
-	background-color: #cd0a1c !important;
-}
-
 .progress-bar-continer-toggle {
 	color: #cd0a1c;
 }
