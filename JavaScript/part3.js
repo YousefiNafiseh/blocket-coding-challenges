@@ -1,6 +1,6 @@
 var Component = function () {
 	const events = {};
-	const publishedEvents = [];
+	const publishedEvents = {};
 	let subscribersId = -1;
 
 	function callSubscriber(subscriber, data) {
@@ -8,6 +8,11 @@ var Component = function () {
 	}
 
 	this.publish = function (event, data) {
+		if (!publishedEvents[event]) {
+			publishedEvents[event] = [];
+		}
+		publishedEvents[event].push(data);
+
 		if (!events[event]) {
 			return false;
 		}
@@ -16,10 +21,7 @@ var Component = function () {
 		subscribers.forEach((subscriber) => {
 			callSubscriber(subscriber, data);
 		});
-		publishedEvents.push({
-			event,
-			data
-		});
+
 		return true;
 	}
 
@@ -35,12 +37,11 @@ var Component = function () {
 			func
 		};
 		events[event].push(subscriber);
-		publishedEvents.filter((item) => item.event === event).
-			forEach((item, index) => {
-				setTimeout(() => {
-					callSubscriber(subscriber, item.data)
-				}, (index + 1) * 2000);
-			});
+		publishedEvents[event].forEach((data, index) => {
+			setTimeout(() => {
+				callSubscriber(subscriber, data)
+			}, (index + 1) * 2000);
+		});
 		return token;
 	}
 
@@ -57,3 +58,4 @@ var Component = function () {
 	}
 
 }
+
